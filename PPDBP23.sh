@@ -10,12 +10,20 @@ do
 		do
 			case $opt in
 			"SCRUM")
+				log="./SCRUM.inf"
+                                if [ ! -e "$log" ]; then
+					touch $log
+                                fi
 				echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
 				select opt2 in  "${optionsub[@]}"
 				do
 					case $opt2 in
 					"Agregar informacion")
-						echo "Se agrega info ..."
+						echo "ingrese el nombre del concepto"
+						read concepto
+						echo "ingrese la definicion del concepto"
+						read def
+						echo "$concepto : $def" >> SCRUM.inf
 						;;
 					"Buscar")
 						echo "Buscamos info ..."
