@@ -27,12 +27,19 @@ do
 						;;
 					"Buscar")
 						echo "Buscamos info ..."
+						echo "Escriba la palabra que desea buscar"
+						read palabra
+						grep -q "$palabra" SCRUM.inf && grep $palabra SCRUM.inf || echo "La palabra $palabra NO EXISTE" 
 						;;
 					"Eliminar informacion")
 						echo "Eliminamos info ..."
+						echo "Escriba la palabra que desea eliminar"
+						read palabra
+						grep -q "$palabra" SCRUM.inf && sed -i "/$palabra/d" SCRUM.inf && echo "La palabra $palabra ha sido eliminada" || echo "La palabra $palabra NO EXISTE por tanto no se puede elimiar"
 						;;
 					"Leer base de informacion")
 						echo "Se lee toda la info ..."
+						cat SCRUM.inf
 						;;
 					"Salir del menu")
 						break
