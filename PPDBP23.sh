@@ -174,7 +174,7 @@ do
 			esac
 		done
 		;;
-		t) echo "usaste -t"
+		t)
 		optionst=("Cascada" "Espiral" "ModeloV" "Salir del menu")
 		optionsubt=("Agregar informacion" "Buscar" "Eliminar informacion" "Leer base de informacion" "Salir del menu")
                 select opt in "${optionst[@]}"
