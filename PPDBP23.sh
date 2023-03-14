@@ -1,5 +1,30 @@
 #!/bin/bash
 
+agregarInformacion() {
+		echo "ingrese el nombre del concepto"
+        	read concepto
+        	echo "ingrese la definicion del concepto"
+        	read def
+        	echo "$concepto .- $def" >> $log
+
+}
+
+buscar() {
+	echo "Buscamos info ..."
+        echo "Escriba la palabra que desea buscar"
+        read palabra
+        grep -iqw "$palabra" $log && echo "la palabra SI existe" || echo "La palabra NO existe"
+}
+
+eliminarInformacion() {
+	echo "Eliminamos info ..."
+	echo "Escriba la palabra que desea eliminar"
+        read palabra
+        grep -iqw "$palabra" $log && sed -i "/$palabra/d" $log && echo "la palabra se elimino" || echo "La palabra $palabra NO EXISTE por tanto no se puede eliminar"
+}
+
+
+
 while getopts 'at' flag
 do
 	case "${flag}" in
@@ -14,32 +39,22 @@ do
                                 if [ ! -e "$log" ]; then
 					touch $log
                                 fi
-				echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
+				echo "Usted esta en la seccion $opt, seleccione la opcion que desea uilizar"
 				select opt2 in  "${optionsub[@]}"
 				do
 					case $opt2 in
 					"Agregar informacion")
-						echo "ingrese el nombre del concepto"
-						read concepto
-						echo "ingrese la definicion del concepto"
-						read def
-						echo "$concepto : $def" >> SCRUM.inf
+						agregarInformacion
 						;;
 					"Buscar")
-						echo "Buscamos info ..."
-						echo "Escriba la palabra que desea buscar"
-						read palabra
-						grep -q "$palabra" SCRUM.inf && grep $palabra SCRUM.inf || echo "La palabra $palabra NO EXISTE" 
+						buscar
 						;;
 					"Eliminar informacion")
-						echo "Eliminamos info ..."
-						echo "Escriba la palabra que desea eliminar"
-						read palabra
-						grep -q "$palabra" SCRUM.inf && sed -i "/$palabra/d" SCRUM.inf && echo "La palabra $palabra ha sido eliminada" || echo "La palabra $palabra NO EXISTE por tanto no se puede elimiar"
+						eliminarInformacion
 						;;
 					"Leer base de informacion")
-						echo "Se lee toda la info ..."
-						cat SCRUM.inf
+						echo "BASE DE INFORMACION DE $opt"
+						cat $log
 						;;
 					"Salir del menu")
 						break
@@ -52,21 +67,26 @@ do
 				done
 				;;
 			"X.P.")
+				log="./X.P.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
 				echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsub[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
@@ -80,21 +100,26 @@ do
                                 ;;
 
 			"Kanban")
+				log="./Kanban.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
 				echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsub[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
@@ -107,21 +132,26 @@ do
                                 done
                                 ;;
 			"Crystal")
+				log="./Crystal.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
 				echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsub[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
@@ -151,21 +181,26 @@ do
                 do
                         case $opt in
                         "Cascada")
+				log="./Cascada.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
                                 echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsubt[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
@@ -179,21 +214,26 @@ do
                                 ;;
 
                         "Espiral")
+				log="./Espiral.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
                                 echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsubt[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
@@ -207,21 +247,26 @@ do
                                 ;;
 
                         "ModeloV")
+				log="./ModeloV.inf"
+                                if [ ! -e "$log" ]; then
+                                        touch $log
+                                fi
                                 echo "Usted esta en la seccion $opt, seleccione la opcion qe desea uilizar"
                                 select opt2 in  "${optionsubt[@]}"
                                 do
                                         case $opt2 in
                                         "Agregar informacion")
-                                                echo "Se agrega info ..."
+                                                agregarInformacion
                                                 ;;
                                         "Buscar")
-                                                echo "Buscamos info ..."
+                                                buscar
                                                 ;;
                                         "Eliminar informacion")
-                                                echo "Eliminamos info ..."
+                                                eliminarInformacion
                                                 ;;
                                         "Leer base de informacion")
-                                                echo "Se lee toda la info ..."
+						echo "BASE DE INFORMACION DE $opt"
+                                                cat $log
                                                 ;;
                                         "Salir del menu")
                                                 break
