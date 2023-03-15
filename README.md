@@ -52,7 +52,7 @@ conocer y manejar Docker
 
 Installing
 Si se usara el script PPDBP23.sh solo entonces para correrlo es ./PPDPBP -a o ./PPDBP -t 
-Descargar la imagen del contenedor del proyecto y correr el contenedor
+Descargar la imagen del contenedor del proyecto desde https://hub.docker.com/r/joseconder/proyectoppdbp/tags con un docker pull joseconder/proyectoppdbp o un docker run -ti joseconder/proyectoppdp "agregar la opcion -a o -t"
 
 Built With
 
