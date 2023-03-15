@@ -20,11 +20,12 @@ buscar() {
 }
 
 eliminarInformacion() {
-	echo "Eliminamos info ..."
-	echo "Escriba la palabra que desea eliminar"
-        read palabra
-	echo -e "\n"
-	grep -iqw "\[$palabra\]" $log && sed -i "/\[$palabra\]/d" $log || echo "La palabra no existe por tanto NO SE ELIMINA"
+    echo "Eliminando la palabra del archivo de registro ..."
+    echo "Ingrese la palabra que desea eliminar:"
+    read palabra
+    echo -e "\n"
+    grep -i -w "$palabra" "$log" && sed -i "/$palabra/Ic\ " "$log" && echo "La palabra ha sido eliminada." || echo "La palabra no existe en el archivo de registro."
+
 }
 
 mostrarmenuA(){
