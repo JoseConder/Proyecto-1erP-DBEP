@@ -5,7 +5,7 @@ agregarInformacion() {
         	read concepto
         	echo "ingrese la definicion del concepto"
         	read def
-        	echo "$concepto .- $def" >> $log
+        	echo "[$concepto] .-$def" >> $log
 		echo -e "\n"
 
 
@@ -16,7 +16,7 @@ buscar() {
         echo "Escriba la palabra que desea buscar"
         read palabra
 	echo -e "\n"
-        grep -iqw "$palabra" $log && grep $palabra $log || echo "La palabra NO existe"
+        grep -iqw "\[$palabra\]" $log && grep -iw "\[$palabra\]" $log || echo "La palabra $palabra NO existe"
 }
 
 eliminarInformacion() {
@@ -24,7 +24,7 @@ eliminarInformacion() {
 	echo "Escriba la palabra que desea eliminar"
         read palabra
 	echo -e "\n"
-        grep -iqw "$palabra" $log && sed -i "/$palabra/d" $log && echo "la palabra se elimino" || echo "La palabra $palabra NO EXISTE por tanto no se puede eliminar"
+	grep -iqw "\[$palabra\]" $log && sed -i "/\[$palabra\]/d" $log || echo "La palabra no existe por tanto NO SE ELIMINA"
 }
 
 mostrarmenuA(){
