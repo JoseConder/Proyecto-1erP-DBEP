@@ -51,7 +51,7 @@ Conocer y manejar git
 conocer y manejar Docker
 
 Installing
-
+Si se usara el script PPDBP23.sh solo entonces para correrlo es ./PPDPBP -a o ./PPDBP -t 
 Descargar la imagen del contenedor del proyecto y correr el contenedor
 
 Built With
